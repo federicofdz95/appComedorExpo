@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 import Home from './views/Home'
 import Menu from './views/Menu'
 
@@ -22,11 +23,20 @@ const Navigation = () => {
   });
 
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-    />
+    <>
+        <Appbar.Header>
+            
+            <Appbar.Content title="App Comedor" />
+            {/*
+            <Appbar.Action icon="magnify" onPress={() => {}} />
+            */}
+        </Appbar.Header>
+        <BottomNavigation
+        navigationState={{ index, routes }}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+        />
+    </>
   );
 };
 

@@ -1,17 +1,55 @@
-import * as React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Avatar, Button, Card, Text } from 'react-native-paper';
-import { Chip } from 'react-native-paper';
 
 
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const Menu = () => {
+const Menu = ({data}) => {
+
+  
+
   return (
-    <>      
-      <Card>        
-        <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />        
-      </Card>
+    <>   
+
+    <Text style={{marginBottom: '5%'}}></Text>
+
+    
+    {data ?
+      
+            data.map((item, y) => (
+              
+              <Card style={{marginBottom:'10%'}} key={y}>
+                <Card.Title title={item.diaMenu.toUpperCase() + ' - ' + item.dia2Menu.toUpperCase()}/>
+                <Card.Cover style={{marginBottom:'10%'}} source={{ uri: item.imgMenu}} />
+                <Card.Content>
+                  
+                  <Text variant="bodyMedium">
+                    Entrada: {item.entradaMenu.toUpperCase()}
+                  </Text>
+
+                  <Text variant="titleLarge">
+                    {item.principalMenu.toUpperCase()}
+                  </Text>                                    
+                  
+                  <Text variant="bodySmall">                    
+                    Postre: {item.postreMenu.toUpperCase()}
+                  </Text>
+
+                </Card.Content>
+              </Card>
+              
+            )) : 
+              <Text>
+                Sin datos
+              </Text>
+            }
+      
+      <Text style={{marginBottom: '30%', textAlign:'center'}}> 
+        devFdz &copy;
+      </Text>
+
     </>
   )
 }
